@@ -15,13 +15,15 @@ def generateDataSet(n):
     return df
 
 # Calculate the gradient (m) and intercept (c) and return the line of best fit
-def olsLinearRegression(x, y):
-    print(x)
-    print(y)
+def olsLinearRegression(data):
+    m = ((df["x"].mean() * df["y"].mean()) - (df["x"] * df["y"]).mean()) / ((df["x"].mean())**2 - (df["x"]**2).mean())
+    c = df["y"].mean() - m * df["x"].mean()
+    return m, c
 
-df = generateDataSet(100)
-print(df.x)
-#olsLinearRegression(x, y)
+df = generateDataSet(250)
+m, c = olsLinearRegression(df)
+
+print("Line of best fit: y = "+str(m)+"x +", c)
 
 # Generate scatter graph using pyplot
 plt.scatter(df.x, df.y)
