@@ -14,9 +14,13 @@ def generateDataSet(n):
     df = pd.DataFrame({'x':df[:,0],'y':df[:,1]})
     return df
 
+def calculateMean(df):
+    mean = sum(df) / float(len(df))
+    return mean
+
 # Calculate the gradient (m) and intercept (c) and return the line of best fit
 def olsLinearRegression(data):
-    m = ((df["x"].mean() * df["y"].mean()) - (df["x"] * df["y"]).mean()) / ((df["x"].mean())**2 - (df["x"]**2).mean())
+    m = ((calculateMean(df["x"]) * calculateMean(df["y"])) - calculateMean(df["x"] * df["y"])) / ((calculateMean(df["x"]))**2 - calculateMean(df["x"]**2))
     c = df["y"].mean() - m * df["x"].mean()
     return m, c
 
