@@ -22,9 +22,11 @@ def olsLinearRegression(data):
 
 df = generateDataSet(250)
 m, c = olsLinearRegression(df)
+line_of_best_fit = [(m*x)+c for x in df["x"]]
 
 print("Line of best fit: y = "+str(m)+"x +", c)
 
 # Generate scatter graph using pyplot
 plt.scatter(df.x, df.y)
+plt.plot(df["x"], line_of_best_fit, color="black")
 plt.show()
