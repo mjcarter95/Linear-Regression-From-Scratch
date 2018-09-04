@@ -21,7 +21,7 @@ def calculateMean(df):
 # Calculate the gradient (m) and intercept (c) and return the line of best fit
 def olsLinearRegression(data):
     m = ((calculateMean(df["x"]) * calculateMean(df["y"])) - calculateMean(df["x"] * df["y"])) / ((calculateMean(df["x"]))**2 - calculateMean(df["x"]**2))
-    c = df["y"].mean() - m * df["x"].mean()
+    c = calculateMean(df["y"]) - m * calculateMean(df["x"])
     return m, c
 
 df = generateDataSet(250)
