@@ -10,18 +10,19 @@ import matplotlib.pyplot as plt
 def generateDataSet(n):
     mean = [1,1]
     cov = [[0.5,0.3], [0.3,0.3]]
-    x = np.random.multivariate_normal(mean, cov, n)
-    y = np.random.multivariate_normal(mean, cov, n)
-    return x, y
+    df = np.random.multivariate_normal(mean, cov, n)
+    df = pd.DataFrame({'x':df[:,0],'y':df[:,1]})
+    return df
 
 # Calculate the gradient (m) and intercept (c) and return the line of best fit
 def olsLinearRegression(x, y):
     print(x)
     print(y)
 
-x, y = generateDataSet(100)
-olsLinearRegression(x, y)
+df = generateDataSet(100)
+print(df.x)
+#olsLinearRegression(x, y)
 
 # Generate scatter graph using pyplot
-plt.scatter(x, y)
+plt.scatter(df.x, df.y)
 plt.show()
